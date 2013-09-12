@@ -18,7 +18,7 @@ util.inherits(Generator, scriptBase);
 
 Generator.prototype.createControllerFiles = function createControllerFiles() {
   var ext = this.options.coffee ? '.coffee' : '.js';
-  var destFile = path.join('app/scripts/collections', this.name + ext);
+  var destFile = path.join('js/collections', this.name + ext);
   var isRequireJsApp = this.isUsingRequireJS();
 
   if (!isRequireJsApp) {
@@ -33,11 +33,12 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
     'define([',
     '    \'underscore\',',
     '    \'backbone\',',
+    '    \'Parse\',',
     '    \'models/' + this.name + '\'',
-    '], function (_, Backbone, ' + this._.classify(this.name) + 'Model' + ') {',
+    '], function (_, Backbone, Parse, ' + this._.classify(this.name) + 'Model' + ') {',
     '    \'use strict\';',
     '',
-    '    var ' + this._.classify(this.name) + 'Collection = Backbone.Collection.extend({',
+    '    var ' + this._.classify(this.name) + 'Collection = Parse.Collection.extend({',
     '        ' + 'model: ' + this._.classify(this.name) + 'Model',
     '    });',
     '',

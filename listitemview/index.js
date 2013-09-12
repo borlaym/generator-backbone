@@ -24,8 +24,8 @@ Generator.prototype.createViewFiles = function createViewFiles() {
   } else if (templateFramework === 'handlebars') {
     templateExt = '.hbs';
   }
-  this.jst_path = 'js/templates/' + this.name + templateExt;
-  var destFile = path.join('js/views', this.name + ext);
+  this.jst_path = 'js/templates/' + this.name + 'ListItem' + templateExt;
+  var destFile = path.join('js/views', this.name + 'ListItem' + ext);
   var isRequireJsApp = this.isUsingRequireJS();
 
   this.template('view.ejs', this.jst_path);
@@ -42,16 +42,17 @@ Generator.prototype.createViewFiles = function createViewFiles() {
     '    \'underscore\',',
     '    \'backbone\',',
     '    \'parse\',',
-    '    \'templates\'',
-    '], function ($, _, Backbone, Parse, JST) {',
+    '    \'templates\',',
+    '    \'models/'+this.name+'\'',
+    '], function ($, _, Backbone, Parse, JST, '+this._.classify(this.name)+'Model) {',
     '    \'use strict\';',
     '',
-    '    var ' + this._.classify(this.name) + 'View = Backbone.View.extend({',
+    '    var ' + this._.classify(this.name) + 'ListItemView = Backbone.View.extend({',
     '        ' + 'template: JST[\'' + this.jst_path + '\'],',
-    '        tagName : "div",',
+    '        tagName : "li",',
     '        className : "'+this.name+'",',
     '        initialize : function() {',
-    '           ',
+    '           this.render();',
     '        },',
     '        render : function() {',
     '           this.$el.html(this.template({model : this.model.toJSON()}));',
@@ -61,7 +62,7 @@ Generator.prototype.createViewFiles = function createViewFiles() {
     '        }',
     '    });',
     '',
-    '    return ' + this._.classify(this.name) + 'View;',
+    '    return ' + this._.classify(this.name) + 'ListItemView;',
     '});'
   ].join('\n');
 

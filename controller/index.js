@@ -25,14 +25,8 @@ Generator.prototype.createViewFiles = function createViewFiles() {
     templateExt = '.hbs';
   }
   this.jst_path = 'js/templates/' + this.name + templateExt;
-  var destFile = path.join('js/views', this.name + ext);
+  var destFile = path.join('js/', this.name + ext);
   var isRequireJsApp = this.isUsingRequireJS();
-
-  this.template('view.ejs', this.jst_path);
-  if (templateFramework === 'mustache') {
-    this.jst_path = this.name + '-template';
-  }
-  
 
   var template = [
     '/*global define*/',
@@ -42,26 +36,18 @@ Generator.prototype.createViewFiles = function createViewFiles() {
     '    \'underscore\',',
     '    \'backbone\',',
     '    \'parse\',',
-    '    \'templates\'',
-    '], function ($, _, Backbone, Parse, JST) {',
+    '    \'collections/'+this.name+'\',',
+    '    \'views/'+this.name+'\'',
+    '], function ($, _, Backbone, Parse, '+this._.classify(this.name)+'Collection, '+this._.classify(this.name)+'View) {',
     '    \'use strict\';',
     '',
-    '    var ' + this._.classify(this.name) + 'View = Backbone.View.extend({',
-    '        ' + 'template: JST[\'' + this.jst_path + '\'],',
-    '        tagName : "div",',
-    '        className : "'+this.name+'",',
+    '    var ' + this._.classify(this.name) + ' = {',
     '        initialize : function() {',
-    '           ',
-    '        },',
-    '        render : function() {',
-    '           this.$el.html(this.template({model : this.model.toJSON()}));',
-    '        },',
-    '        events : {',
-    '           ',
+    '           this.collection = new ' + this._.classify(this.name) + 'Collection();',
     '        }',
-    '    });',
+    '    };',
     '',
-    '    return ' + this._.classify(this.name) + 'View;',
+    '    return ' + this._.classify(this.name) + ';',
     '});'
   ].join('\n');
 

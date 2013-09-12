@@ -33,7 +33,7 @@ util.inherits(Generator, scriptBase);
 
 Generator.prototype.createModelFiles = function createModelFiles() {
   var ext = this.options.coffee ? '.coffee' : '.js';
-  var destFile = path.join('app/scripts/models', this.name + ext);
+  var destFile = path.join('js/models', this.name + ext);
   this.isRequireJsApp = this.isUsingRequireJS();
 
   if (!this.isRequireJsApp) {
@@ -47,11 +47,12 @@ Generator.prototype.createModelFiles = function createModelFiles() {
     '',
     'define([',
     '    \'underscore\',',
-    '    \'backbone\'',
-    '], function (_, Backbone) {',
+    '    \'backbone\',',
+    '    \'parse\'',
+    '], function (_, Backbone, Parse) {',
     '    \'use strict\';',
     '',
-    '    var ' + this._.classify(this.name) + 'Model = Backbone.Model.extend({',
+    '    var ' + this._.classify(this.name) + 'Model = Parse.Object.extend("'+this._.classify(this.name)+'", {',
     '        defaults: {',
     '        }',
     '    });',
