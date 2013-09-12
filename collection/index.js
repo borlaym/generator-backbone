@@ -33,7 +33,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
     'define([',
     '    \'underscore\',',
     '    \'backbone\',',
-    '    \'Parse\',',
+    '    \'parse\',',
     '    \'models/' + this.name + '\'',
     '], function (_, Backbone, Parse, ' + this._.classify(this.name) + 'Model' + ') {',
     '    \'use strict\';',
