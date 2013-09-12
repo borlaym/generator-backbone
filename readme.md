@@ -1,15 +1,15 @@
-# Backbone.js generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-backbone.png?branch=master)](http://travis-ci.org/yeoman/generator-backbone)
+# Yeoman SubGenerators for the Kriek Template
 
-Maintainer: [Revath S Kumar](https://github.com/revathskumar)
+Maintainer: [Márton Borlay](https://github.com/borlaym)
 
-A Backbone generator for Yeoman that provides a functional boilerplate Backbone app out of the box. You also get access to a number of sub-generators which can be used to easily create individual models, views, collections and so on.
+Forked from the Backbone Generator.
+Right now only the subgenerators work for this template : https://github.com/borlaym/kriek_template
+TODO: full project generator.
 
-Optional RequireJS (AMD) support has recently been added as a prompt when using the generator on new projects.
+## Installation
 
-
-## Usage
-
-Install: `npm install -g generator-backbone`
+1. Clone the kriek_template repository
+`$ git clone https://github.com/borlaym/kriek_template.git`
 
 Make a new directory and `cd` into it:
 ```
