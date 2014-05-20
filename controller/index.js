@@ -25,7 +25,7 @@ Generator.prototype.createViewFiles = function createViewFiles() {
     templateExt = '.hbs';
   }
   this.jst_path = 'app/scripts/templates/' + this.name + templateExt;
-  var destFile = path.join('js/', this.name + ext);
+  var destFile = path.join('app/scripts/', this.name + ext);
   var isRequireJsApp = this.isUsingRequireJS();
 
   var template = [
