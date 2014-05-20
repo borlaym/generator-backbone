@@ -22,7 +22,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
   /* COLLECTION */
 
-  var destFile = path.join('js/collections', this.name + ext);
+  var destFile = path.join('app/scripts/collections', this.name + ext);
   var template = [
     '/*global define*/',
     '',
@@ -45,7 +45,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
   /* MODEL */
 
-  destFile = path.join('js/models', this.name + ext);
+  destFile = path.join('app/scripts/models', this.name + ext);
   template = [
     '/*global define*/',
     '',
@@ -72,7 +72,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
   /* LIST ITEM VIEW */
 
-  destFile = path.join('js/views', this.name + 'ListItem' + ext);
+  destFile = path.join('app/scripts/views', this.name + 'ListItem' + ext);
   template = [
     '/*global define*/',
     '',
@@ -105,12 +105,12 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
   ].join('\n');
 
   this.write(destFile, template);
-  this.jst_path = 'js/templates/' + this.name + 'ListItem' + templateExt;
+  this.jst_path = 'app/scripts/templates/' + this.name + 'ListItem' + templateExt;
   this.template('view.ejs', this.jst_path);
 
   /* LIST VIEW */
 
-  destFile = path.join('js/views', this.name + 'List' + ext);
+  destFile = path.join('app/scripts/views', this.name + 'List' + ext);
   template = [
     '/*global define*/',
     '',
@@ -150,7 +150,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
   ].join('\n');
 
   this.write(destFile, template);
-  this.jst_path = 'js/templates/' + this.name + 'List' + templateExt;
+  this.jst_path = 'app/scripts/templates/' + this.name + 'List' + templateExt;
   this.template('view.ejs', this.jst_path);
 
   /* CONTROLLER */
@@ -182,7 +182,7 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
 
   /* CONTROLLER VIEW */
 
-  destFile = path.join('js/views', this.name + ext);
+  destFile = path.join('app/scripts/views', this.name + ext);
   template = [
     '/*global define*/',
     '',
@@ -214,6 +214,6 @@ Generator.prototype.createControllerFiles = function createControllerFiles() {
   ].join('\n');
 
   this.write(destFile, template);
-  this.jst_path = 'js/templates/' + this.name + templateExt;
+  this.jst_path = 'app/scripts/templates/' + this.name + templateExt;
   this.template('view.ejs', this.jst_path);
 };

@@ -24,8 +24,8 @@ Generator.prototype.createViewFiles = function createViewFiles() {
   } else if (templateFramework === 'handlebars') {
     templateExt = '.hbs';
   }
-  this.jst_path = 'js/templates/' + this.name + 'ListItem' + templateExt;
-  var destFile = path.join('js/views', this.name + 'ListItem' + ext);
+  this.jst_path = 'app/scripts/templates/' + this.name + 'ListItem' + templateExt;
+  var destFile = path.join('app/scripts/views', this.name + 'ListItem' + ext);
   var isRequireJsApp = this.isUsingRequireJS();
 
   this.template('view.ejs', this.jst_path);
